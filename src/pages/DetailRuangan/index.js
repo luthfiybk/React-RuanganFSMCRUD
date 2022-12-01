@@ -16,7 +16,7 @@ export default class DetailRuangan extends Component {
             let data = querySnapshot.val() ? querySnapshot.val() : {}
             let ruanganItem = {...data}
 
-            this.state({
+            this.setState({
                 ruangan: ruanganItem
             })
         })
