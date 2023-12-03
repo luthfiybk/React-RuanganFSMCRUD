@@ -1,4 +1,4 @@
-import { Text, StyleSheet, View, TouchableOpacity, Alert } from "react-native";
+import { Text, StyleSheet, View, TouchableOpacity, Alert, ScrollView } from "react-native";
 import React, { Component } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
@@ -53,22 +53,43 @@ export default class Home extends Component {
 
     render() {
         const{ruangans, ruanganKey} = this.state
+        const gedungName = Array.from(new Set(ruanganKey.map((key) => ruangans[key].gedung)))
         return (
             <View style={styles.page}>
                 <View style={styles.header}>
                     <Text style={styles.title}>Daftar Ruangan</Text>
                     <View style={styles.line}/>
                 </View>
-                <View style={styles.listRuangan}>
-                    {ruanganKey.length > 0 ? (
+                <ScrollView style={styles.listRuangan}>
+                    {/* {ruanganKey.length > 0 ? (
                         ruanganKey.map((key) => (
                             <CardRuangan key={key} ruanganItem={ruangans[key]} id={key}
-                            {...this.props} removeData={this.removeData} />
+                            {...this.props} removeData={this.removeData}/>
                         ))
                     ) : (
-                        <Text>Daftar Kosong</Text>
+                        <Text style={{position:'absolute', fontSize: 20}}>Daftar Kosong</Text>
+                    )} */}
+                    {/* {gedungName.map((gedung) => (
+                        <React.Fragment key={gedung}>
+                            <Text style={{ fontSize: 24, fontWeight: 'bold' }}>{gedung}</Text>
+                            {ruanganKey.filter(key => ruangans[key].gedung === gedung).map(key => (
+                            <CardRuangan key={key} ruanganItem={ruangans[key]} id={key} {...this.props} removeData={this.removeData} />
+                            ))}
+                        </React.Fragment>
+                    ))} */}
+                    {gedungName.map(gedung => (
+                        <React.Fragment key={gedung}>
+                            <Text style={{ fontSize: 24, fontWeight: 'bold' }}>{gedung}</Text>
+                            <View style={styles.line}/>
+                            {ruanganKey.filter(key => ruangans[key].gedung === gedung).map(key => (
+                                <CardRuangan key={key} ruanganItem={ruangans[key]} id={key} {...this.props} removeData={this.removeData} />
+                            ))}
+                        </React.Fragment>
+                    ))}
+                    {ruanganKey.length === 0 && (
+                        <Text style={{ position: 'absolute', fontSize: 20 }}>Daftar Kosong</Text>
                     )}
-                </View>
+                </ScrollView>
                 <View style={styles.wrapperButton}>
                     <TouchableOpacity
                         style={styles.btnTambah}
@@ -84,7 +105,7 @@ export default class Home extends Component {
 const styles = StyleSheet.create({
     page: {
         flex: 1,
-        marginTop: 30
+        marginTop: 40
     },
 
     header: {
@@ -113,12 +134,13 @@ const styles = StyleSheet.create({
         position: 'absolute',
         bottom: 0,
         right: 0,
-        margin: 30
+        margin: 30,
+        justifyContent: 'flex-end',
     },
 
     btnTambah: {
         padding: 20,
-        backgroundColor: 'skyblue',
+        backgroundColor: 'lime',
         borderRadius: 30,
         shadowcolor:"#000",
         shadowOffset: {
@@ -127,6 +149,7 @@ const styles = StyleSheet.create({
         },
         shadowOpacity: 0.25,
         shadowRadius: 3.84,
-        elevation: 5
+        elevation: 5,
+
     }
 })

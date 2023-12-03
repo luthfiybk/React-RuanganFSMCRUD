@@ -8,11 +8,11 @@ const CardRuangan = ({id, ruanganItem, navigation, removeData}) => {
         <TouchableOpacity style={styles.container} onPress={() => navigation.navigate('DetailRuangan', {id:id})}>
             <View>
                 <Text style={styles.nama}>{ruanganItem.namaRuangan}</Text>
-                <Text style={styles.kapasitas}>Kapasitas: {ruanganItem.kapasitas}</Text>
+                <Text style={styles.kapasitas}>Kapasitas: {ruanganItem.kapasitas} orang</Text>
             </View>
             <View style={styles.icon}>
-                <Pressable onPress={() => navigation.navigate('EditRuangan', {id:id})}>
-                    <FontAwesomeIcon icon={ faEdit } color={ 'yellow' } size={ 25 }/>
+                <Pressable onPress={() => navigation.navigate('EditRuangan', {id:id})} style={{marginRight: 5}}>
+                    <FontAwesomeIcon icon={ faEdit } color={ 'orange' } size={ 25 }/>
                 </Pressable>
                 <Pressable onPress={() => removeData(id)}>
                     <FontAwesomeIcon icon={ faTimes } color={ 'red' } size={ 25 }/>
@@ -29,7 +29,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         padding: 15,
         backgroundColor: 'white',
-        borderRadius: 5,
+        borderRadius: 10,
         marginBottom: 10,
         shadowColor: "#000",
         shadowOffset: {
@@ -57,5 +57,6 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: 'flex-end',
         alignItems: 'center',
+        padding: 5,
     }
 })

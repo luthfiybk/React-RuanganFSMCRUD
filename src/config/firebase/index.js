@@ -5,12 +5,12 @@ import "firebase/compat/database"
 
 
 const firebaseConfig = {
-    apiKey: "AIzaSyBa31RWd9r9uhhfkgTDagANG3AVbu0kC9I",
-    authDomain: "fsm-crud.firebaseapp.com",
-    projectId: "fsm-crud",
-    storageBucket: "fsm-crud.appspot.com",
-    messagingSenderId: "3000132227",
-    appId: "1:3000132227:web:c0263fd51d06975bab31b6"
+    apiKey: "AIzaSyAYfQVIcvlSa4hYQDbqVf6otWs21Dbvaeg",
+    authDomain: "ruangan-fsm.firebaseapp.com",
+    projectId: "ruangan-fsm",
+    storageBucket: "ruangan-fsm.appspot.com",
+    messagingSenderId: "584509496631",
+    appId: "1:584509496631:web:b7ec07832c606fc9724eb2",
 };
 firebase.initializeApp(firebaseConfig)
 

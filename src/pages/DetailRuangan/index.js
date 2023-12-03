@@ -26,11 +26,17 @@ export default class DetailRuangan extends Component {
         const { ruangan } = this.state
         return (
             <View style={styles.pages}>
-                <Text>Nama Ruangan : </Text>
+                <Text>Kode Ruangan : </Text>
                 <Text style={styles.text}>{ruangan.namaRuangan}</Text>
 
                 <Text>Kapasitas : </Text>
-                <Text style={styles.text}>{ruangan.kapasitas}</Text>
+                <Text style={styles.text}>{ruangan.kapasitas} orang</Text>
+
+                <Text>Gedung : </Text>
+                <Text style={styles.text}>{ruangan.gedung}</Text>
+
+                <Text>Lantai : </Text>
+                <Text style={styles.text}>{ruangan.lantai} </Text>
             </View>
         )
     }
